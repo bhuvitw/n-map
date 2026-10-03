@@ -2,6 +2,11 @@
 
 **One identity. Many CPSE systems. Explainable harmonization.**
 
+### 🔗 Live demo — <https://n-map-k8sw.onrender.com>
+
+> Hosted on a free instance, which sleeps after ~15 minutes idle. If the first
+> load is slow, it is waking up — give it under a minute.
+
 A working prototype for **SIH Problem Statement 26099** — AI-driven
 standardization and harmonization of material codes across CPSEs.
 
@@ -296,7 +301,7 @@ base URL to set. The API client already falls back to same-origin requests
 (`frontend/src/lib/api.ts`), so nothing needs rewiring.
 
 ```
-https://<your-service>.onrender.com
+https://n-map-k8sw.onrender.com
   ├─ /          → React console
   ├─ /api/*     → FastAPI
   └─ /docs      → Swagger
@@ -336,8 +341,13 @@ single-origin deployment.
   visitor gets a clean queue. Durable decisions would need a Render Disk or
   Postgres.
 
-Free-tier CPU is shared, so `/api/benchmark` and search are slower than the
-~4 s / ~50 ms measured locally.
+- **The benchmark result is cached in memory** per `(sample_size, seed)`. The
+  first load of `/benchmark` on a cold instance takes ~10 s on shared CPU;
+  every load after that is instant until the instance restarts. Open it once
+  while warming up and it will be immediate during the demo.
+
+Measured on the live free instance: search ~76 ms, benchmark ~10.5 s cold,
+cold-start ~7 s. Locally those are ~50 ms and ~3.9 s.
 
 ---
 
