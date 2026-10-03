@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+data/nmap.db
+data/nmap.db-wal
+data/nmap.db-shm
+.env

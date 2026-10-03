@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-navy-950 text-slate-200 antialiased;
+  background-image:
+    radial-gradient(900px 500px at 12% -8%, rgba(75, 134, 212, 0.10), transparent 60%),
+    radial-gradient(700px 400px at 92% 0%, rgba(45, 90, 150, 0.07), transparent 60%);
+  background-attachment: fixed;
+}
+
+/* Dense enterprise scrollbars */
+*::-webkit-scrollbar { width: 9px; height: 9px; }
+*::-webkit-scrollbar-track { background: #0a1020; }
+*::-webkit-scrollbar-thumb { background: #1d2b48; border-radius: 2px; }
+*::-webkit-scrollbar-thumb:hover { background: #27395c; }
+
+@layer components {
+  /* Console panel: the base surface for every module */
+  .panel {
+    @apply bg-navy-900/80 border border-navy-700/70 rounded-sm backdrop-blur-sm;
+  }
+  .panel-header {
+    @apply flex items-center justify-between gap-3 px-4 py-2.5
+           border-b border-navy-700/70;
+  }
+  .panel-title {
+    @apply text-[0.7rem] font-semibold tracking-[0.14em] uppercase text-steel-400;
+  }
+
+  /* Technical label above a value */
+  .label {
+    @apply text-2xs font-medium tracking-[0.12em] uppercase text-slate-500;
+  }
+  .value-mono {
+    @apply font-mono text-sm text-slate-100;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2 py-0.5 rounded-sm border
+           text-2xs font-semibold tracking-wide uppercase whitespace-nowrap;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-3.5 py-2 rounded-sm
+           border text-xs font-semibold tracking-wide uppercase
+           transition-colors disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-accent/90 border-accent text-white hover:bg-accent;
+  }
+  .btn-ghost {
+    @apply btn bg-navy-800/60 border-navy-700 text-steel-300
+           hover:bg-navy-750 hover:text-slate-100;
+  }
+  .btn-approve {
+    @apply btn bg-emerald-600/15 border-emerald-600/50 text-emerald-300
+           hover:bg-emerald-600/25;
+  }
+  .btn-reject {
+    @apply btn bg-rose-600/15 border-rose-600/50 text-rose-300
+           hover:bg-rose-600/25;
+  }
+  .btn-flag {
+    @apply btn bg-amber-500/15 border-amber-500/50 text-amber-300
+           hover:bg-amber-500/25;
+  }
+
+  /* Dense data table */
+  .dtable {
+    @apply w-full text-left border-collapse;
+  }
+  .dtable thead th {
+    @apply px-3 py-2 text-2xs font-semibold tracking-[0.12em] uppercase
+           text-slate-500 border-b border-navy-700 bg-navy-850/60
+           sticky top-0 z-10;
+  }
+  .dtable tbody td {
+    @apply px-3 py-2 text-[0.8rem] border-b border-navy-800/70 align-top;
+  }
+  .dtable tbody tr:hover {
+    @apply bg-navy-800/40;
+  }
+
+  .input {
+    @apply w-full bg-navy-850 border border-navy-700 rounded-sm px-3 py-2
+           text-sm text-slate-100 placeholder:text-slate-600
+           focus:outline-none focus:border-accent/70 focus:ring-1
+           focus:ring-accent/30;
+  }
+}

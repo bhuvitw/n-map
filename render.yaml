@@ -1,0 +1,8 @@
+# Render Blueprint: one Docker web service serving the API and the console.
+services:
+  - type: web
+    name: n-map
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /api/health
